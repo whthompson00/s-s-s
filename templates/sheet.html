@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+
+{% block main %}
+
+    <!-- http://getbootstrap.com/docs/4.1/content/typography/ -->
+    <h1 class="mb-3">Sheet</h1>
+
+    <!-- http://getbootstrap.com/docs/4.1/components/forms/ -->
+    <!-- dynamically put in the csv list-->
+    <ul>
+        {% for response in responses %}
+            <li class="list-group-item list-group-item-dark">
+                <b>Name: </b>{{ response[0] }}
+                <b>Answer to question 1: </b> {{ response[1] }}
+                <b>Answer to question 2: </b> {{ response[2] }}
+                <b>Answer to question 3: </b> {{ response[3] }}
+                <b>Answer to question 4: </b> {{ response[4] }}
+            </li>
+        {% endfor %}
+    </ul>
+
+
+{% endblock %}
