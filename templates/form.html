@@ -1,0 +1,117 @@
+{% extends "layout.html" %}
+
+{% block main %}
+
+    <!-- http://getbootstrap.com/docs/4.1/content/typography/ -->
+    <h1 class="mb-3">The Will Thompson Quiz</h1>
+    <h3>Punishment of failure is death</h3>
+    <br>
+
+    <!-- http://getbootstrap.com/docs/4.1/components/forms/ -->
+    <form action="/form" method="post">
+        <h5>Name</h5>
+        <!--get the user's name-->
+        <div class="input-group mb-3">
+            <input class="form-control" autocomplete="off" placeholder="Name" type="text" aria-describedby="basic-addon1" id="name" name="name">
+        </div>
+
+        <!--from bootstraps: https://getbootstrap.com/docs/4.0/components/forms/#default-stacked-->
+        <!--radio boxes for question 1 and 2 each with 3 options-->
+        <div class="form-group1">
+            <h5>Question 1: What goes up but never goes down?</h5>
+            <div class="form-check1">
+                <input class="form-check-input1" name="q1" type="radio" value="Your age" id="Your age">
+                <label class="form-check-label1" for="Your age">
+                    Your age
+                </label>
+            </div>
+            <div class="form-check1">
+                <input class="form-check-input1" name="q1" type="radio" value="Taxes" id="Taxes">
+                <label class="form-check-label1" for="Taxes">
+                    Taxes
+                </label>
+            </div>
+            <div class="form-check1">
+                <input class="form-check-input1" name="q1" type="radio" value="Smoke" id="Smoke">
+                <label class="form-check-label1" for="Smoke">
+                    Smoke
+                </label>
+            </div>
+        </div>
+
+        <div class="form-group1">
+            <h5>Question 2: What can be in your pant's pocket, if your pant's pocket is still empty?</h5>
+            <div class="form-check1">
+                <input class="form-check-input1" name="q2" type="radio" value="Air" id="Air">
+                <label class="form-check-label1" for="Air">
+                    Air
+                </label>
+            </div>
+            <div class="form-check1">
+                <input class="form-check-input1" name="q2" type="radio" value="A hole" id="A hole">
+                <label class="form-check-label1" for="A hole">
+                    A hole
+                </label>
+            </div>
+            <div class="form-check1">
+                <input class="form-check-input1" name="q2" type="radio" value="A bird's brain" id="A bird's brain">
+                <label class="form-check-label1" for="A bird's brain">
+                    A bird's brain
+                </label>
+            </div>
+        </div>
+        <!--use a dropdown menu from bootsrap to select answer-->
+        <h5>Question 3: How many Yale students does it take to change a lightbulb?</h5>
+        <div class="dropdown">
+            <select class="dropdown" name="q3">
+                <option class="dropdown-item" disabled selected value="">--select--</option>
+                <option class="dropdown-item" value="None" name="q3" type="radio">None.  New Haven is better in the dark. </option>
+                <option class="dropdown-item" value="76" name="q3" type="radio">76. 1 to change the lightbulb; 50 fifty protest the lightbulb's right not to change; 25 counter protest. </option>
+                <option class="dropdown-item" value="5" name="q3" type="radio">5. 1 to screw it in; 4 to share the expirience. </option>
+            </select>
+        </div>
+        <br>
+        <!--use input to get answer of question 4-->
+        <h5>Question 4: What's the deal with airplane food?</h5>
+        <div class="input-group mb-3">
+            <input class="form-control" autocomplete="off" placeholder="What's the deal. I need to know." type="text" aria-describedby="basic-addon1" id="q4" name="q4">
+        </div>
+
+        <!-- http://getbootstrap.com/docs/4.1/components/buttons/ -->
+        <button class="btn btn-secondary" type="submit">Submit</button>
+
+    </form>
+
+    <script>
+
+        document.querySelector('form').onsubmit = function() {
+            Listq1 = document.querySelectorAll('input[name="q1"]')
+            Listq2 = document.querySelectorAll('input[name="q2"]')
+            console.log(Listq1)
+            if (!document.querySelector('input').value) {
+                alert('You must input your name!');
+                return false;
+            }
+            else if (!(Listq1[0].checked || Listq1[1].checked || Listq1[2].checked)){
+                alert('You shall answer question 1!');
+                return false;
+            }
+            else if (!(Listq2[0].checked || Listq2[1].checked || Listq2[2].checked)){
+                alert('Answer question 2 is a NECESSITY!');
+                return false;
+            }
+            else if (!document.querySelector('select').value) {
+                alert('Death awaits if you fail to answer Q3!');
+                return false;
+            }
+            else if (!document.querySelector('input[name=q4]').value) {
+                alert('You must tell me about airplane food!');
+                return false;
+            }
+            return true;
+
+        };
+
+    </script>
+
+{% endblock %}
