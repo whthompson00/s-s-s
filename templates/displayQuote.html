@@ -1,0 +1,10 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Company Information
+{% endblock %}
+
+{% block main %}
+    <h2 class="text-center">Company: {{quote["name"]}} ({{quote["symbol"]}})</h2>
+    <h3 class="text-center">Stock price: {{quote["price"]}}</h3>
+{% endblock %}

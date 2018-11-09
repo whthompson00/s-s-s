@@ -1,0 +1,37 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Sell Stock
+{% endblock %}
+
+{% block main %}
+    <form action="/sell" method="post">
+        Stock
+        <div class="dropdown">
+            <select name = "symbol">
+                <option class="dropdown-item" disabled selected value="">--select stock--</option>
+                <!--Dynamically create a dropdown menu for the stocks the sser can sell-->
+                {%for stock in stocks%}
+                    <option class="dropdown-item" value="{{stock.tickerSymbol}}" name="symbol" type="radio"> {{stock["tickerSymbol"]}} </option>
+                {%endfor%}
+            </select>
+        </div>
+        <div>
+            <input autocomplete="off" autofocus class="form-control" name="shares" placeholder="number of shares" type="text">
+        </div>
+        <button class="btn btn-primary" type="submit">Sell</button>
+    </form>
+
+    <script>
+
+        document.querySelector('form').onsubmit = function() {
+            //send the user an error if either of the fields are blank
+            if (!(document.querySelector('input[name="stock"]').value && document.querySelector('input[name="shares"]').value)){
+                alert('Need to enter both fields');
+                return false;
+            }
+            return true;
+        };
+
+    </script>
+{% endblock %}

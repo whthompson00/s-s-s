@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Buy Stock
+{% endblock %}
+
+{% block main %}
+    <form action="/buy" method="post">
+        Stock
+        <div class="form-group">
+            <input autocomplete="off" autofocus class="form-control" name="symbol" placeholder="ticker symbol" type="text">
+            <input autocomplete="off" autofocus class="form-control" name="shares" placeholder="number of shares" type="text">
+        </div>
+        <button class="btn btn-primary" type="submit">Buy</button>
+    </form>
+
+    <script>
+
+        document.querySelector('form').onsubmit = function() {
+            if (!(document.querySelector('input[name="stock"]').value && document.querySelector('input[name="shares"]').value)){
+                alert('Need to enter both fields');
+                return false;
+            }
+            return true;
+        };
+
+    </script>
+{% endblock %}

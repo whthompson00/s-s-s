@@ -1,0 +1,35 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Portfolio
+{% endblock %}
+
+{% block main %}
+    <h2> Portfolio </h2>
+    <h5>Cash Balance: {{cash}} || Account Value: {{total}} </h5>
+    <table class="table">
+        <thead>
+            <tr>
+                <!--Create the heading for the table with all relevent info-->
+                <th scope="col">Transaction Time</th>
+                <th scope="col">Transaction Type</th>
+                <th scope="col">Company name</th>
+                <th scope="col">Transaction Price</th>
+                <th scope="col">Quantity</th>
+                <th scope="col">Value</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!--dynamically add rows of information for each transaction by the user-->
+            {% for stock in stocks%}
+                <tr class="table-light">
+                    <td>{{stock["purchaseTime"]}}</td>
+                    <td>{{stock["transactionType"]}}</td>
+                    <td>{{stock["stockName"]}}</td>
+                    <td>{{stock["transactionPrice"]}}</td>
+                    <td>{{stock["quantity"]}}</td>
+                    <td>{{stock["value"]}}</td>
+                </tr>
+            {%endfor%}
+    </table>
+{% endblock %}

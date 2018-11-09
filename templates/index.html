@@ -1,0 +1,48 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Portfolio
+{% endblock %}
+
+{% block main %}
+    <h2> Portfolio </h2>
+    <h5>Cash Balance: {{cash}} || Account Value: {{total}} </h5>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <!--heading of the table-->
+                <th scope="col">Company name</th>
+                <th scope="col">Current Price</th>
+                <th scope="col">Quantity</th>
+                <th scope="col">Value</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!--dynamically add all the relevant info for the portfolio into a table-->
+            {% for stock in stocks%}
+                <tr class="table-light">
+
+                    <td>{{stock["stockName"]}}</td>
+                    <td>{{stock["currentPrice"]}}</td>
+                    <td>{{stock["quantity"]}}</td>
+                    <td>{{stock["value"]}}</td>
+                </tr>
+            {%endfor%}
+            <!--add the cash and total value rows-->
+            <tr class="table-secondary">
+                <td>Cash</td>
+                <td>--</td>
+                <td>--</td>
+                <td>{{cash}}</td>
+            </tr>
+            <tr class="table-secondary">
+                <td>Total</td>
+                <td>--</td>
+                <td>--</td>
+                <td>{{total}}</td>
+            </tr>
+        </tbody>
+
+    </table>
+{% endblock %}
