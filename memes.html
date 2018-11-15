@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Memes</title>
+    </head>
+    <body>
+        <h1>Harvard Memes for Elitist 1% Tweens</h1>
+        <form>
+            <input autofocus autocomplete="off" name="comment" placeholder="Comment" type="text">
+            <input type="submit" value="Post">
+        </form>
+        <ul></ul>
+        <script>
+
+            const FRIENDS = {
+                'Bill Gates': 'BillGates',
+                'Mark Zuckerberg': 'zuck'
+            };
+
+            document.querySelector('form').onsubmit = function(e) {
+                e.preventDefault();
+                let comment = document.querySelector('input[name=comment]');
+                let li = '<li>' + linkify(comment.value) + '</li>';
+                document.querySelector('ul').innerHTML += li;
+                comment.value = '';
+            };
+
+            function linkify(s) {
+                var x = 0;
+                // iterates through the whole list of FRIENDS
+                for (var friend in FRIENDS){
+                    // if a friend's name is in the comment, hyperlink the name
+                    if (s.includes(friend)){
+                        // check if this is the first friend being hyperlinked
+                        if (x == 0){
+                            // creates hyperlink of the name
+                            var newText = '<a href="https://www.facebook.com/{{FRIENDS[friend]}}">' + friend + '</a>';
+                            //replace in the text the new hyperlinked name
+                            var newPage = s.replace(friend, newText);
+                            x++;
+                        }
+                        // if another user is simultaneously called in the comment, change their name to a hyperlink as well
+                        else{
+                            // creates hyperlink of the name
+                            newText = '<a href="https://www.facebook.com/{{FRIENDS[friend]}}">' +  friend + '</a>';
+                            //replace in the text the new hyperlinked name
+                            newPage = newPage.replace(friend, newText);
+                        }
+                    }
+                }
+                return newPage;
+            }
+        </script>
+    </body>
+</html>
