@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    College Basketball GLICKO Rankings
+{% endblock %}
+
+{% block main %}
+    <table class="table table-striped" width=400>
+        <thead class="table-light">
+            <tr>
+                <td>Ranking</td>
+                <th>Team</th>
+                <th>Rating</th>
+            </tr>
+        </thead>
+        <tbody>
+            {%for team in Teams%}
+                <tr class="table-light">
+                    <td>{{loop.index}}</td>
+                    <td>{{team["TeamName"]}}</td>
+                    <td>{{team["rating"]}}</td>
+                </tr>
+            {%endfor%}
+        </tbody>
+    </table>
+
+{% endblock %}

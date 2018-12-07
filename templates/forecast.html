@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Game Forecast
+{% endblock %}
+
+{% block main %}
+    <!-- http://getbootstrap.com/docs/4.1/content/typography/ -->
+    <h1 class="mb-3">Game Forecast</h1>
+    <!-- http://getbootstrap.com/docs/4.1/components/tables/ -->
+    <table class="table table-striped" width=400>
+        <thead class="table-light">
+            <tr>
+                <th>Team</th>
+                <th>Chances to Win</th>
+            </tr>
+        </thead>
+        <tbody class="table-light">
+            <tr>
+                <td>{{ team1 }}</td>
+                <td>{{ "%.2f"|format(chances1) }}%</td>
+            </tr>
+            <tr>
+                <td>{{ team2 }}</td>
+                <td>{{ "%.2f"|format(chances2) }}%</td>
+            </tr>
+        </tbody>
+    </table>
+    <button class="btn btn-primary" type="submit"><a class="nav-link" href="/headtohead"></a>Try a Different Combination!</button>
+{% endblock %}

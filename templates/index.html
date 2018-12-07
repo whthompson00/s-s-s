@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Welcome to Superior Sports Stats!
+{% endblock %}
+
+{% block main %}
+    <div class="jumbotron jumbotron-fluid  bg-white text-danger" style="margin-bottom: 10%">
+        <h1 class="cover-heading">Official College Basketball GLICKO Ratings</h1>
+        <h5 style="margin-top: 1%">
+            A innovative new approach to NCAA College Basketball rankings
+        </h5>
+        <hr class="my-5 bg-info">
+            <h6 align="center" style="margin-top: 5%">
+                Originally designed as a rating system for chess, ELO has taken over the statistics sports world.
+                Currently, many websites, like Nate Silver's 538, use ELO to rate teams and predict wins for NBA and college basketball; however, this ELO model does not take into account the reliability of ratings, and thus overestimates win probabilities.
+                In order to predict more accurately the outcomes of games, Professor Mark Glickman invented the GLICKO model.  Unfortuntaley, this newer, superior model has not
+                caught on, and no major websites currently use GLICKO to predict college basketball games.
+            </h6>
+        </hr>
+
+    </div>
+    <h6 class="p-3 mb-2 bg-danger text-white">
+        A Will Thompson + Reid Piercy Project
+    </h6>
+{% endblock %}
